@@ -244,26 +244,25 @@ static KPRunEverywhereXcodePlugin *sharedPlugin;
         NSMenuItem *destinationMenuItem = [[productMenuItem submenu] itemWithTitle:@"Destination"];
         
         if ([destinationMenuItem hasSubmenu]) {
-            BOOL inDestinationZone = NO;
+            BOOL foundFirstSeparator = NO;
             
             for (NSMenuItem *menuItem in [[destinationMenuItem submenu] itemArray]) {
-                
                 // Grab everything after first separator, and before second separator or end of the menu
                 if ([menuItem isSeparatorItem]) {
-                    if (!inDestinationZone) {
-                        inDestinationZone = YES;
+                    if (!foundFirstSeparator) {
+                        foundFirstSeparator = YES;
                     }
                     else {
-                        inDestinationZone = NO;
+                        break;
                     }
                 }
-                else if (inDestinationZone) {
+                else if (foundFirstSeparator) {
                     [destinationItems addObject:menuItem];
                 }
             }
         }
     }
-    
+
     return [destinationItems copy];
 }
 

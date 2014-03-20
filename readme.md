@@ -55,6 +55,9 @@ Inspiration was drawn from a couple of Stack Overflow threads:
 
 - [Run on simulator and phone with one click](http://stackoverflow.com/questions/15300241/run-on-simulator-and-phone-with-one-click)
 
+- [Is it possible to run an app on two devices with one click on the build and run button in Xcode 5?](http://stackoverflow.com/questions/22116564/is-it-possible-to-run-an-app-on-two-devices-with-one-click-on-the-build-and-run?lq=1)
+
+
 -----
 
 ###Author
