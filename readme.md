@@ -3,9 +3,9 @@
 -----
 
 ###Overview
-**An Xcode 5 plugin to build and run apps across multiple iOS devices with one click.**
+**An Xcode 5 plugin to build and run an app across multiple iOS devices with one click.**
 
-Gone are the days of manually switching between device destinations and fiddling with the "play" and "stop" buttons. RunEverywhere is particularly useful for testing networked projects or multiple iPhone / iPod models.
+Gone are the days of manually switching between device destinations and fiddling with the "play" and "stop" buttons. RunEverywhere streamlines development and testing across multiple iPhone / iPod models. This is especially handy if you're building multi-player games, universal apps, or networked apps in general.
 
 The plugin adds two new commands to Xcode's "Product" menu.
 
@@ -25,11 +25,15 @@ Stops the app on all attached devices.
 Two options here:
 
 #####Via Alcatraz
-RunEverywhere will be available through the [Alcatraz](http://alcatraz.io) Xcode plugin management system.
+RunEverywhere is available through the [Alcatraz](http://alcatraz.io) Xcode plugin management system.
 
 
 #####From source
-Simply build the Xcode project and restart Xcode. The plugin will automatically install to `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins`. To uninstall, just remove the plugin from there (and restart Xcode).
+Simply build the Xcode project and restart Xcode. The plugin will automatically install to `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins`.
+
+To uninstall, just remove the plugin from the above directory, and restart Xcode:
+
+	rm -rf ~/Library/Application\ Support/Developer/Shared/Xcode/Plug-ins/KPRunEverywhereXcodePlugin.xcplugin
 
 Tested on Xcode 5.1 and Mac OS X 10.9.2.
 
