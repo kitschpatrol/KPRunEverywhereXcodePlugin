@@ -266,4 +266,8 @@ static KPRunEverywhereXcodePlugin *sharedPlugin;
     return [destinationItems copy];
 }
 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
 @end
