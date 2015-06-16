@@ -17,7 +17,7 @@ Builds and runs the app on all attached devices.
 
 Stops the app on all attached devices.
 
-![image](screenshot-readme.png)
+<img src="screenshot-readme.png" width="300" height="376" />
 
 -----
 
