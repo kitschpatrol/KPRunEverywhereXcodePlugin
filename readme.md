@@ -73,7 +73,7 @@ Inspiration was drawn from a couple of Stack Overflow threads:
 -----
 
 ###Author
-Eric Mika  
+Eric Mika
 [github.com/kitschpatrol](http://github.com/kitschpatrol)
 
 -----
