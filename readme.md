@@ -57,7 +57,7 @@ Running everywhere might not work if Xcode loses focus during to app-launch proc
 -----
 
 ###Thanks
-Built with [Delisa Mason's](https://github.com/kattrali) super handy [Xcode 5 Plugin Template](https://github.com/kattrali/Xcode5-Plugin-Template).
+Built with [Delisa Mason's](https://github.com/kattrali) super handy [Xcode Plugin Template](https://github.com/kattrali/Xcode-Plugin-Template).
 
 Inspiration was drawn from a couple of Stack Overflow threads:
 
@@ -73,8 +73,9 @@ Inspiration was drawn from a couple of Stack Overflow threads:
 -----
 
 ###Author
-Eric Mika
-[github.com/kitschpatrol](http://github.com/kitschpatrol)
+Eric Mika  
+[github.com/kitschpatrol](http://github.com/kitschpatrol)  
+[@kitschpatrol](https://twitter.com/kitschpatrol)
 
 -----
 
