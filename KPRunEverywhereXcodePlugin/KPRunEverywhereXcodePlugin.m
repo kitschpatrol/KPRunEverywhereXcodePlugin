@@ -14,8 +14,8 @@ static KPRunEverywhereXcodePlugin *sharedPlugin;
 
 @property (nonatomic, strong) NSBundle *bundle;
 
-@property (nonatomic, strong) NSMenuItem *initiallySelectedDestination;
-@property (nonatomic, strong) NSMutableArray *destinationsToBuild;
+@property (nonatomic, strong) NSString *initiallySelectedDestinationTitle;
+@property (nonatomic, strong) NSMutableArray *destinationTitlesToBuild;
 
 // Guards prevent multiple builds on redundant notifications
 @property (nonatomic) BOOL waitingForBuild;
@@ -45,7 +45,7 @@ static KPRunEverywhereXcodePlugin *sharedPlugin;
     _waitingForBuild = NO;
     _waitingForRun = NO;
     _waitingForStop = NO;
-    _destinationsToBuild = nil;
+    _destinationTitlesToBuild = nil;
 
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(applicationDidFinishLaunching:)
@@ -109,11 +109,11 @@ static KPRunEverywhereXcodePlugin *sharedPlugin;
       [self runSelected];
 
       // Clean up if it's the end of the list
-      if (self.destinationsToBuild.count == 0) {
-        self.destinationsToBuild = nil;
+      if (self.destinationTitlesToBuild.count == 0) {
+        self.destinationTitlesToBuild = nil;
         self.waitingForBuild = NO;
         self.waitingForRun = NO;
-        [self performActionForMenuItem:self.initiallySelectedDestination];
+        [self performActionForMenuItemWithTitle:self.initiallySelectedDestinationTitle];
       }
     }
   }
@@ -157,14 +157,15 @@ static KPRunEverywhereXcodePlugin *sharedPlugin;
   self.waitingForBuild = NO;
   self.waitingForRun = NO;
 
-  self.destinationsToBuild = [NSMutableArray arrayWithArray:[self getDestinationMenuItems]];
+  self.destinationTitlesToBuild = [NSMutableArray arrayWithArray:[self getDestinationMenuItemTitles]];
 
   // TODO stop everything
   // Save initially selected item
-  self.initiallySelectedDestination = nil;
-  for (NSMenuItem *destinationMenuItem in self.destinationsToBuild) {
+  self.initiallySelectedDestinationTitle = nil;
+  for (NSString *destinationTitle in self.destinationTitlesToBuild) {
+    NSMenuItem *destinationMenuItem = [self getDestinationMenuByTitle:destinationTitle];
     if (destinationMenuItem.state == NSOnState) {
-      self.initiallySelectedDestination = destinationMenuItem;
+      self.initiallySelectedDestinationTitle = destinationMenuItem.title;
       break;
     }
   }
@@ -176,14 +177,14 @@ static KPRunEverywhereXcodePlugin *sharedPlugin;
 #pragma mark - Logic
 
 - (void)buildNextDestination {
-  if (self.destinationsToBuild) {
-    if (self.destinationsToBuild.count > 0) {
+  if (self.destinationTitlesToBuild) {
+    if (self.destinationTitlesToBuild.count > 0) {
       // Run next
-      NSMenuItem *destinationToBuild = [self.destinationsToBuild lastObject];
-      [self.destinationsToBuild removeLastObject];
+      NSString *destinationToBuildTitle = [self.destinationTitlesToBuild lastObject];
+      [self.destinationTitlesToBuild removeLastObject];
 
       // Select destination
-      [self performActionForMenuItem:destinationToBuild];
+      [self performActionForMenuItemWithTitle:destinationToBuildTitle];
       [self buildSelected];
     }
   }
@@ -211,6 +212,15 @@ static KPRunEverywhereXcodePlugin *sharedPlugin;
   [self performActionForMenuItem:runMenuItem];
 }
 
+- (void)performActionForMenuItemWithTitle:(NSString *)title {
+  // Run UI stuff on the main thread
+  dispatch_async(dispatch_get_main_queue(), ^{
+    [self updateMenus];
+    NSMenuItem *menuItem = [self getDestinationMenuByTitle:title];
+    [[menuItem menu] performActionForItemAtIndex:[[menuItem menu] indexOfItem:menuItem]];
+  });
+}
+
 - (void)performActionForMenuItem:(NSMenuItem *)menuItem {
   // Run UI stuff on the main thread
   dispatch_async(dispatch_get_main_queue(), ^{
@@ -219,6 +229,17 @@ static KPRunEverywhereXcodePlugin *sharedPlugin;
 }
 
 #pragma mark - Helpers
+
+- (NSMenuItem *)getDestinationMenuByTitle:(NSString *)title {
+  NSMenuItem *productMenuItem = [[NSApp mainMenu] itemWithTitle:@"Product"];
+  if ([productMenuItem hasSubmenu]) {
+    NSMenuItem *destinationMenuItem = [[productMenuItem submenu] itemWithTitle:@"Destination"];
+    if ([destinationMenuItem hasSubmenu]) {
+      return [[destinationMenuItem submenu] itemWithTitle:title];
+    }
+  }
+  return nil;
+}
 
 - (void)updateMenus {
   // According to dtrace the destinations list is generated lazily when the menu is opened
@@ -238,7 +259,7 @@ static KPRunEverywhereXcodePlugin *sharedPlugin;
   }
 }
 
-- (NSArray *)getDestinationMenuItems {
+- (NSArray *)getDestinationMenuItemTitles {
   // Fish out the destination menu items
   NSMutableArray *destinationItems = [NSMutableArray array];
 
@@ -261,7 +282,7 @@ static KPRunEverywhereXcodePlugin *sharedPlugin;
             break;
           }
         } else if (foundFirstSeparator) {
-          [destinationItems addObject:menuItem];
+          [destinationItems addObject:menuItem.title];
         }
       }
     }
