@@ -43,10 +43,11 @@ KPRunEverywhere is compatible with Xcode 5, 6, and 7.
 
 It's specifically tested and known to work on:
 
-- Xcode 5.1 + Mac OS X 10.9.2
+- Xcode 5.1.0 + Mac OS X 10.9.2
 - Xcode 6.0.1 + Mac OS X 10.9.5
-- Xcode 6.3 + Mac OS X 10.10.3
+- Xcode 6.3.0 + Mac OS X 10.10.3
 - Xcode 7.0.1 + Mac OS X 10.11.0
+- Xcode 7.1.0 + Mac OS X 10.11.1
 
 -----
 
