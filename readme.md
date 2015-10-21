@@ -39,21 +39,21 @@ To uninstall, just remove the plugin from the above directory, and restart Xcode
 -----
 
 ###Compatibility
-KPRunEverywhere is compatible with Xcode 5 and Xcode 6.
+KPRunEverywhere is compatible with Xcode 5, 6, and 7.
 
 It's specifically tested and known to work on:
 
 - Xcode 5.1 + Mac OS X 10.9.2
 - Xcode 6.0.1 + Mac OS X 10.9.5
 - Xcode 6.3 + Mac OS X 10.10.3
-- Xcode 7.0.1 + Mac OS X 10.11.0 (Still testing.)
+- Xcode 7.0.1 + Mac OS X 10.11.0
 
 -----
 
 ###Limitations
 This isn't going to work on the simulator.
 
-Running everywhere might not work if Xcode loses focus during to app-launch process. I recommend giving Xcode a second to collect itself after invoking Run Everywhere. This is an unfortunate side-effect of the menu-manipulation implemenation.
+Running everywhere might not work if Xcode loses focus during to app-launch process. I recommend giving Xcode a second to collect itself after invoking Run Everywhere. This is an unfortunate side-effect of the menu-manipulating implementation.
 
 -----
 
