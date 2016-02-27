@@ -216,8 +216,13 @@ static KPRunEverywhereXcodePlugin *sharedPlugin;
   // Run UI stuff on the main thread
   dispatch_async(dispatch_get_main_queue(), ^{
     [self updateMenus];
-    NSMenuItem *menuItem = [self getDestinationMenuByTitle:title];
-    [[menuItem menu] performActionForItemAtIndex:[[menuItem menu] indexOfItem:menuItem]];
+    @try {
+        NSMenuItem *menuItem = [self getDestinationMenuByTitle:title];
+        [[menuItem menu] performActionForItemAtIndex:[[menuItem menu] indexOfItem:menuItem]];
+    }
+    @catch (NSException *exception) {
+        
+    }
   });
 }
 
