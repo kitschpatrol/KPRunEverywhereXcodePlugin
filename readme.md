@@ -1,9 +1,9 @@
-#RunEverywhere Xcode Plugin
+# RunEverywhere Xcode Plugin
 
 -----
 
-###Overview
-**An Xcode plugin to build and run an app across multiple iOS devices with one click.**
+### Overview
+**An Xcode 7 plugin to build and run an app across multiple iOS devices with one click.**
 
 Gone are the days of manually switching between device destinations and fiddling with the "play" and "stop" buttons. RunEverywhere streamlines development and testing across multiple iPhone / iPod models. This is especially handy if you're building multi-player games, universal apps, or networked apps in general.
 
@@ -21,14 +21,14 @@ Stops the app on all attached devices.
 
 -----
 
-###Installation
+### Installation
 Two options here:
 
-#####Via Alcatraz
+##### Via Alcatraz
 RunEverywhere is available through the [Alcatraz](http://alcatraz.io) Xcode plugin management system.
 
 
-#####From source
+##### From source
 Simply build the Xcode project and restart Xcode. The plugin will automatically install to `~/Library/Application Support/Developer/Shared/Xcode/Plug-ins/`.
 
 To uninstall, just remove the plugin from the above directory, and restart Xcode:
@@ -38,7 +38,7 @@ To uninstall, just remove the plugin from the above directory, and restart Xcode
 
 -----
 
-###Compatibility
+### Compatibility
 KPRunEverywhere is compatible with Xcode 5, 6, and 7.
 
 It's specifically tested and known to work on:
@@ -51,14 +51,16 @@ It's specifically tested and known to work on:
 
 -----
 
-###Limitations
+### Limitations
 This isn't going to work on the simulator.
 
 Running everywhere might not work if Xcode loses focus during to app-launch process. I recommend giving Xcode a second to collect itself after invoking Run Everywhere. This is an unfortunate side-effect of the menu-manipulating implementation.
 
+Unfortunately, Apple removed support for traditional plugins in Xcode 8, and the new official APIs do not allow the functionality implemented in KPRunEverywhere. Any progress on this front will be tracked in [issue #17](https://github.com/kitschpatrol/KPRunEverywhereXcodePlugin/issues/17).
+
 -----
 
-###Thanks
+### Thanks
 Built with [Delisa Mason's](https://github.com/kattrali) super handy [Xcode Plugin Template](https://github.com/kattrali/Xcode-Plugin-Template).
 
 Inspiration was drawn from a couple of Stack Overflow threads:
@@ -74,7 +76,7 @@ Inspiration was drawn from a couple of Stack Overflow threads:
 
 -----
 
-###Author
+### Author
 Eric Mika  
 [github.com/kitschpatrol](http://github.com/kitschpatrol)  
 [@kitschpatrol](https://twitter.com/kitschpatrol)
