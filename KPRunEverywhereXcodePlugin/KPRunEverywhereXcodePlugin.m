@@ -1,6 +1,6 @@
 //
-//  RunEverywhereXcodePlugin.m
-//  RunEverywhereXcodePlugin
+//  KPRunEverywhereXcodePlugin.m
+//  KPRunEverywhereXcodePlugin
 //
 //  Created by Eric Mika on 3/19/14.
 //  Copyright (c) 2014 Kitschpatrol. All rights reserved.
@@ -39,7 +39,7 @@ static KPRunEverywhereXcodePlugin *sharedPlugin;
 
 - (id)initWithBundle:(NSBundle *)plugin {
   if (self = [super init]) {
-    // Reference to plugin's bundle, for resource acccess
+    // Reference to plugin's bundle, for resource access
     self.bundle = plugin;
 
     _waitingForBuild = NO;

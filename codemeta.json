@@ -1,0 +1,36 @@
+{
+  "@context": "https://w3id.org/codemeta/3.1",
+  "@type": "SoftwareSourceCode",
+  "name": "KPRunEverywhereXcodePlugin",
+  "identifier": "com.kitschpatrol.KPRunEverywhereXcodePlugin",
+  "version": "1.0",
+  "description": "An Xcode 7 plugin to build and run an app across multiple iOS devices with one click.",
+  "author": {
+    "@type": "Person",
+    "email": "eric@ericmika.com",
+    "name": "Eric Mika",
+    "url": "https://ericmika.com"
+  },
+  "keywords": [
+    "xcode",
+    "xcode-plugin",
+    "ios",
+    "objective-c",
+    "developer-tools"
+  ],
+  "programmingLanguage": "Objective-C",
+  "operatingSystem": [
+    "macOS >= 10.10"
+  ],
+  "url": "https://github.com/kitschpatrol/KPRunEverywhereXcodePlugin",
+  "codeRepository": "https://github.com/kitschpatrol/KPRunEverywhereXcodePlugin.git",
+  "issueTracker": "https://github.com/kitschpatrol/KPRunEverywhereXcodePlugin/issues",
+  "license": "https://spdx.org/licenses/MIT",
+  "dateCreated": "2014-03-19",
+  "softwareRequirements": [
+    {
+      "@type": "SoftwareApplication",
+      "name": "Xcode"
+    }
+  ]
+}
